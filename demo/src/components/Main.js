@@ -224,6 +224,7 @@ export default class Main extends Component {
                 startDate: this.state.compareRanges.compare.startDate,
                 endDate: this.state.compareRanges.compare.endDate,
                 key: 'compare',
+                // color: '#3ecf8e',
                 color: '#3ecf8e',
               },
             ]}
@@ -278,6 +279,16 @@ export default class Main extends Component {
                 startDate: this.state.dateRange.selection.startDate,
                 endDate: this.state.dateRange.selection.endDate,
                 key: 'selection',
+              },
+            ]}
+            badges={[
+              {
+                date: '2018-04-18',
+                count: 6,
+              },
+              {
+                date: '2018-04-19',
+                count: 9,
               },
             ]}
             className={'PreviewArea'}

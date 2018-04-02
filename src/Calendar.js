@@ -454,6 +454,7 @@ Calendar.propTypes = {
   }),
   direction: PropTypes.oneOf(['vertical', 'horizontal']),
   navigatorRenderer: PropTypes.func,
+  badges: PropTypes.array,
 };
 
 export default Calendar;

@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import DayCell, { rangeShape } from './DayCell.js';
 import {
+  parse,
   format,
   startOfDay,
   endOfDay,
@@ -67,6 +68,13 @@ class Month extends PureComponent {
         <div className={styles.days} onMouseLeave={this.props.onMouseLeave}>
           {eachDayOfInterval({ start: monthDisplay.start, end: monthDisplay.end }).map(
             (day, index) => {
+              let badge = 0;
+              const matchBadge = this.props.badges.find(badgeItem =>
+                isSameDay(day, parse(badgeItem.date, 'YYYY-MM-DD', new Date()))
+              );
+              if (matchBadge) {
+                badge = matchBadge.count;
+              }
               const isStartOfMonth = isSameDay(day, monthDisplay.startDateOfMonth);
               const isEndOfMonth = isSameDay(day, monthDisplay.endDateOfMonth);
               const isSpecialDay = specialDays.some(specialDay => isSameDay(day, specialDay));
@@ -99,6 +107,7 @@ class Month extends PureComponent {
                   onMouseEnter={this.props.onDragSelectionMove}
                   dragRange={drag.range}
                   drag={drag.status}
+                  badge={badge}
                 />
               );
             }
@@ -109,7 +118,9 @@ class Month extends PureComponent {
   }
 }
 
-Month.defaultProps = {};
+Month.defaultProps = {
+  badges: [],
+};
 
 Month.propTypes = {
   style: PropTypes.object,
@@ -135,6 +146,7 @@ Month.propTypes = {
   monthDisplayFormat: PropTypes.string,
   showWeekDays: PropTypes.bool,
   showMonthName: PropTypes.bool,
+  badges: PropTypes.array,
 };
 
 export default Month;

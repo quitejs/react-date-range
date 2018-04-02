@@ -17,6 +17,7 @@ class DayCell extends Component {
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
     this.renderSelectionPlaceholders = this.renderSelectionPlaceholders.bind(this);
     this.renderPreviewPlaceholder = this.renderPreviewPlaceholder.bind(this);
+    this.renderBadgePlaceholder = this.renderBadgePlaceholder.bind(this);
   }
 
   handleKeyEvent(event) {
@@ -94,6 +95,27 @@ class DayCell extends Component {
       [styles.dayHovered]: this.state.hover,
       [styles.dayActive]: this.state.active,
     });
+  }
+  renderBadgePlaceholder() {
+    const { badge } = this.props;
+    return (
+      this.props.badge > 0 && (
+        <span
+          style={{
+            color: 'white',
+            backgroundColor: ' red ',
+            position: 'absolute',
+            width: 20,
+            height: 20,
+            lineHeight: '20px',
+            left: 25,
+            bottom: 20,
+            borderRadius: 20,
+          }}>
+          { badge }
+        </span>
+      )
+    );
   }
   renderPreviewPlaceholder() {
     const { preview, day, previewColor, color, styles } = this.props;
@@ -175,6 +197,7 @@ class DayCell extends Component {
         style={{ color: this.props.color }}>
         {this.renderSelectionPlaceholders()}
         {this.renderPreviewPlaceholder()}
+        {this.renderBadgePlaceholder()}
         <span className={styles.dayNumber}>
           <span>{format(this.props.day, 'D')}</span>
         </span>
@@ -199,6 +222,7 @@ DayCell.propTypes = {
   day: PropTypes.object.isRequired,
   date: PropTypes.object,
   ranges: PropTypes.arrayOf(rangeShape),
+  badge: PropTypes.number,
   preview: PropTypes.shape({
     startDate: PropTypes.object,
     endDate: PropTypes.object,
