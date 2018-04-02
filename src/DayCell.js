@@ -105,12 +105,13 @@ class DayCell extends Component {
             color: 'white',
             backgroundColor: ' red ',
             position: 'absolute',
-            width: 20,
-            height: 20,
-            lineHeight: '20px',
+            width: 14,
+            height: 14,
+            fontSize: 12,
+            lineHeight: '14px',
             left: 25,
             bottom: 20,
-            borderRadius: 20,
+            borderRadius: 14,
           }}>
           { badge }
         </span>
