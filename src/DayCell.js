@@ -102,10 +102,13 @@ class DayCell extends Component {
       this.props.badge > 0 && (
         <span
           style={{
+            zIndex: 1,
             color: 'white',
             backgroundColor: ' red ',
             position: 'absolute',
-            width: 14,
+            paddingLeft: 5,
+            paddingRight: 5,
+            // width: 14,
             height: 14,
             fontSize: 12,
             lineHeight: '14px',
@@ -198,10 +201,10 @@ class DayCell extends Component {
         style={{ color: this.props.color }}>
         {this.renderSelectionPlaceholders()}
         {this.renderPreviewPlaceholder()}
-        {this.renderBadgePlaceholder()}
         <span className={styles.dayNumber}>
           <span>{format(this.props.day, 'D')}</span>
         </span>
+        {this.renderBadgePlaceholder()}
       </button>
     );
   }

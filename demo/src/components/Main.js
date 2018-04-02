@@ -288,7 +288,7 @@ export default class Main extends Component {
               },
               {
                 date: '2018-04-19',
-                count: 9,
+                count: 99,
               },
             ]}
             className={'PreviewArea'}
