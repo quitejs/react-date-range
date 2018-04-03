@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Calendar, DateRange, DateRangePicker } from '../../../src';
+import { Calendar, DateRange, DateRangePicker } from '../../../dist';
 import * as rdrLocales from '../../../src/locale';
 import { format, addDays } from 'date-fns';
 import Section from './Section';
