@@ -116,7 +116,7 @@ class DayCell extends Component {
             bottom: 20,
             borderRadius: 14,
           }}>
-          { badge }
+          {badge}
         </span>
       )
     );
@@ -153,8 +153,7 @@ class DayCell extends Component {
     const inRanges = ranges.reduce((result, range) => {
       const startDate = range.startDate ? endOfDay(range.startDate) : null;
       const endDate = range.endDate ? startOfDay(range.endDate) : null;
-      const isInRange =
-        (!startDate || isAfter(day, startDate)) && (!endDate || isBefore(day, endDate));
+      const isInRange = isAfter(day, startDate) && isBefore(day, endDate);
       const isStartEdge = !isInRange && isSameDay(day, startDate);
       const isEndEdge = !isInRange && isSameDay(day, endDate);
       if (isInRange || isStartEdge || isEndEdge) {
@@ -170,7 +169,7 @@ class DayCell extends Component {
       }
       return result;
     }, []);
-
+    console.log('inranges', inRanges);
     return inRanges.map((range, i) => (
       <span
         key={i}
@@ -183,6 +182,7 @@ class DayCell extends Component {
       />
     ));
   }
+
   render() {
     const { styles } = this.props;
     return (
